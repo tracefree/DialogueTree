@@ -1,0 +1,62 @@
+[gd_scene load_steps=4 format=3 uid="uid://b4peo1mvj5qk7"]
+
+[ext_resource type="Script" uid="uid://be87mgfi6a7m7" path="res://addons/DialogueTree/dialogue_tree_editor.gd" id="1_fwgjn"]
+[ext_resource type="Script" uid="uid://b052tsijadiyb" path="res://addons/DialogueTree/dialogue_graph.gd" id="2_cd0rb"]
+[ext_resource type="Script" uid="uid://dxhixbcxxed3c" path="res://addons/DialogueTree/graph_nodes/graph_dialogue_node.gd" id="3_vtrbw"]
+
+[node name="DialogueTreeEditor" type="Control" node_paths=PackedStringArray("graph_edit")]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fwgjn")
+graph_edit = NodePath("VBoxContainer/Panel/DialogueGraph")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Dialogue" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="DialogueGraph" type="GraphEdit" parent="VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 7.0
+offset_right = 10.0
+offset_bottom = 7.0
+grow_horizontal = 2
+grow_vertical = 2
+right_disconnects = true
+script = ExtResource("2_cd0rb")
+
+[node name="GraphDialogueNode" type="GraphNode" parent="VBoxContainer/Panel/DialogueGraph"]
+layout_mode = 0
+offset_left = 777.0
+offset_top = 352.0
+offset_right = 1048.0
+offset_bottom = 600.0
+mouse_filter = 1
+position_offset = Vector2(777, 352)
+script = ExtResource("3_vtrbw")
+
+[connection signal="connection_from_empty" from="VBoxContainer/Panel/DialogueGraph" to="VBoxContainer/Panel/DialogueGraph" method="_on_connection_from_empty"]
+[connection signal="connection_request" from="VBoxContainer/Panel/DialogueGraph" to="VBoxContainer/Panel/DialogueGraph" method="_on_connection_request"]
+[connection signal="connection_to_empty" from="VBoxContainer/Panel/DialogueGraph" to="VBoxContainer/Panel/DialogueGraph" method="_on_connection_to_empty"]
+[connection signal="delete_nodes_request" from="VBoxContainer/Panel/DialogueGraph" to="VBoxContainer/Panel/DialogueGraph" method="_on_delete_nodes_request"]
+[connection signal="disconnection_request" from="VBoxContainer/Panel/DialogueGraph" to="VBoxContainer/Panel/DialogueGraph" method="_on_disconnection_request"]
+[connection signal="popup_request" from="VBoxContainer/Panel/DialogueGraph" to="VBoxContainer/Panel/DialogueGraph" method="_on_popup_request"]

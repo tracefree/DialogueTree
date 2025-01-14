@@ -1,0 +1,280 @@
+[gd_resource type="Resource" script_class="DialogueTree" load_steps=51 format=3 uid="uid://be4hshdd0y41o"]
+
+[ext_resource type="Script" uid="uid://dn1r46tao1528" path="res://addons/DialogueTree/dialogue_tree.gd" id="1_l4obs"]
+[ext_resource type="Script" uid="uid://hy57yhbdueqt" path="res://addons/DialogueTree/dialogue_nodes/abstract/dialogue_node.gd" id="2_mqdg7"]
+[ext_resource type="Script" uid="uid://dq1nf01bqh1wy" path="res://addons/DialogueTree/dialogue_nodes/dialogue_node_start.gd" id="3_0t26f"]
+[ext_resource type="Script" path="res://addons/DialogueTree/dialogue_connection_slot.gd" id="4_4e8vb"]
+[ext_resource type="Script" path="res://addons/DialogueTree/dialogue_connection.gd" id="5_ujw1x"]
+[ext_resource type="Script" uid="uid://dsl4v47jlqhik" path="res://addons/DialogueTree/dialogue_nodes/dialogue_node_line.gd" id="6_hrxdf"]
+[ext_resource type="Script" uid="uid://bshvd1wttkw1t" path="res://addons/DialogueTree/dialogue_nodes/dialogue_node_choice.gd" id="7_7i3t7"]
+[ext_resource type="Script" uid="uid://dh8p4j8k0iwl8" path="res://addons/DialogueTree/dialogue_nodes/action/dialogue_node_action_item.gd" id="8_whq4a"]
+[ext_resource type="Script" uid="uid://bdd6n8tfnh82g" path="res://addons/DialogueTree/dialogue_nodes/action/dialogue_node_action_quest.gd" id="9_hynv2"]
+[ext_resource type="Script" uid="uid://kvwnxvan7s57" path="res://addons/DialogueTree/dialogue_nodes/dialogue_node_end.gd" id="10_o26nf"]
+[ext_resource type="Script" uid="uid://p6ru0wu7n1a3" path="res://addons/DialogueTree/dialogue_nodes/dialogue_node_relay.gd" id="11_g8pli"]
+
+[sub_resource type="Resource" id="Resource_xhoih"]
+script = ExtResource("4_4e8vb")
+name = &""
+ingoing_type = 1
+outgoing_type = -1
+ingoing = Array[ExtResource("5_ujw1x")]([])
+outgoing = Array[ExtResource("5_ujw1x")]([])
+
+[sub_resource type="Resource" id="Resource_pdscp"]
+script = ExtResource("10_o26nf")
+id = 0
+slots = Array[ExtResource("4_4e8vb")]([SubResource("Resource_xhoih")])
+position = Vector2(3340, 220)
+
+[sub_resource type="Resource" id="Resource_pgf6n"]
+script = ExtResource("5_ujw1x")
+node = SubResource("Resource_pdscp")
+slot_index = 0
+
+[sub_resource type="Resource" id="Resource_i3asm"]
+script = ExtResource("4_4e8vb")
+name = &""
+ingoing_type = 1
+outgoing_type = 1
+ingoing = Array[ExtResource("5_ujw1x")]([])
+outgoing = Array[ExtResource("5_ujw1x")]([SubResource("Resource_pgf6n")])
+
+[sub_resource type="Resource" id="Resource_mme4w"]
+script = ExtResource("9_hynv2")
+quest_id = "knee_vengance"
+operation = "start"
+id = 0
+slots = Array[ExtResource("4_4e8vb")]([SubResource("Resource_i3asm")])
+position = Vector2(3020, 220)
+
+[sub_resource type="Resource" id="Resource_ki1rw"]
+script = ExtResource("5_ujw1x")
+node = SubResource("Resource_mme4w")
+slot_index = 0
+
+[sub_resource type="Resource" id="Resource_4sbhs"]
+script = ExtResource("4_4e8vb")
+name = &""
+ingoing_type = 1
+outgoing_type = 1
+ingoing = Array[ExtResource("5_ujw1x")]([])
+outgoing = Array[ExtResource("5_ujw1x")]([SubResource("Resource_ki1rw")])
+
+[sub_resource type="Resource" id="Resource_eap6r"]
+script = ExtResource("8_whq4a")
+amount = 1
+give_to_initiator = true
+remove_from_inventory = true
+id = 0
+slots = Array[ExtResource("4_4e8vb")]([SubResource("Resource_4sbhs")])
+position = Vector2(2731.75, 215.148)
+
+[sub_resource type="Resource" id="Resource_lhx3b"]
+script = ExtResource("5_ujw1x")
+node = SubResource("Resource_eap6r")
+slot_index = 0
+
+[sub_resource type="Resource" id="Resource_alihn"]
+script = ExtResource("5_ujw1x")
+node = SubResource("Resource_eap6r")
+slot_index = 0
+
+[sub_resource type="Resource" id="Resource_gefqw"]
+script = ExtResource("4_4e8vb")
+name = &""
+ingoing_type = 1
+outgoing_type = 1
+ingoing = Array[ExtResource("5_ujw1x")]([])
+outgoing = Array[ExtResource("5_ujw1x")]([SubResource("Resource_lhx3b"), SubResource("Resource_alihn")])
+
+[sub_resource type="Resource" id="Resource_q3qfj"]
+script = ExtResource("6_hrxdf")
+text = "You would do that for me? Then I you can have my heirloom weapon."
+block_flow = true
+id = 0
+slots = Array[ExtResource("4_4e8vb")]([SubResource("Resource_gefqw")])
+position = Vector2(2340, 60)
+
+[sub_resource type="Resource" id="Resource_qwqcc"]
+script = ExtResource("5_ujw1x")
+node = SubResource("Resource_q3qfj")
+slot_index = 0
+
+[sub_resource type="Resource" id="Resource_n8w0c"]
+script = ExtResource("5_ujw1x")
+node = SubResource("Resource_q3qfj")
+slot_index = 0
+
+[sub_resource type="Resource" id="Resource_dyqme"]
+script = ExtResource("4_4e8vb")
+name = &""
+ingoing_type = 1
+outgoing_type = 1
+ingoing = Array[ExtResource("5_ujw1x")]([])
+outgoing = Array[ExtResource("5_ujw1x")]([SubResource("Resource_qwqcc"), SubResource("Resource_n8w0c")])
+
+[sub_resource type="Resource" id="Resource_4xkyn"]
+script = ExtResource("7_7i3t7")
+text = "By my honor, I will avenge your knee."
+new_content = true
+id = 0
+slots = Array[ExtResource("4_4e8vb")]([SubResource("Resource_dyqme")])
+position = Vector2(1980, 200)
+
+[sub_resource type="Resource" id="Resource_kr6jp"]
+script = ExtResource("5_ujw1x")
+node = SubResource("Resource_4xkyn")
+slot_index = 0
+
+[sub_resource type="Resource" id="Resource_chih3"]
+script = ExtResource("5_ujw1x")
+node = SubResource("Resource_4xkyn")
+slot_index = 0
+
+[sub_resource type="Resource" id="Resource_a1gkc"]
+script = ExtResource("4_4e8vb")
+name = &""
+ingoing_type = 1
+outgoing_type = -1
+ingoing = Array[ExtResource("5_ujw1x")]([])
+outgoing = Array[ExtResource("5_ujw1x")]([])
+
+[sub_resource type="Resource" id="Resource_xn1bp"]
+script = ExtResource("10_o26nf")
+id = 0
+slots = Array[ExtResource("4_4e8vb")]([SubResource("Resource_a1gkc")])
+position = Vector2(2300, 800)
+
+[sub_resource type="Resource" id="Resource_2383j"]
+script = ExtResource("5_ujw1x")
+node = SubResource("Resource_xn1bp")
+slot_index = 0
+
+[sub_resource type="Resource" id="Resource_a4ypr"]
+script = ExtResource("4_4e8vb")
+name = &""
+ingoing_type = 1
+outgoing_type = 1
+ingoing = Array[ExtResource("5_ujw1x")]([])
+outgoing = Array[ExtResource("5_ujw1x")]([SubResource("Resource_2383j")])
+
+[sub_resource type="Resource" id="Resource_gjlif"]
+script = ExtResource("7_7i3t7")
+text = "Sorry, no time for your backstory."
+new_content = true
+id = 0
+slots = Array[ExtResource("4_4e8vb")]([SubResource("Resource_a4ypr")])
+position = Vector2(1960, 720)
+
+[sub_resource type="Resource" id="Resource_4njhi"]
+script = ExtResource("5_ujw1x")
+node = SubResource("Resource_gjlif")
+slot_index = 0
+
+[sub_resource type="Resource" id="Resource_jaklc"]
+script = ExtResource("4_4e8vb")
+name = &""
+ingoing_type = 1
+outgoing_type = 1
+ingoing = Array[ExtResource("5_ujw1x")]([])
+outgoing = Array[ExtResource("5_ujw1x")]([])
+
+[sub_resource type="Resource" id="Resource_f4e1w"]
+script = ExtResource("11_g8pli")
+name = "top_level"
+id = 0
+slots = Array[ExtResource("4_4e8vb")]([SubResource("Resource_jaklc")])
+position = Vector2(2420, 500)
+
+[sub_resource type="Resource" id="Resource_aw0kb"]
+script = ExtResource("5_ujw1x")
+node = SubResource("Resource_f4e1w")
+slot_index = 0
+
+[sub_resource type="Resource" id="Resource_on58i"]
+script = ExtResource("4_4e8vb")
+name = &""
+ingoing_type = 1
+outgoing_type = 1
+ingoing = Array[ExtResource("5_ujw1x")]([])
+outgoing = Array[ExtResource("5_ujw1x")]([SubResource("Resource_aw0kb")])
+
+[sub_resource type="Resource" id="Resource_gi0px"]
+script = ExtResource("7_7i3t7")
+text = "Sorry, could you say that again?"
+new_content = true
+id = 0
+slots = Array[ExtResource("4_4e8vb")]([SubResource("Resource_on58i")])
+position = Vector2(1940, 460)
+
+[sub_resource type="Resource" id="Resource_lnq8x"]
+script = ExtResource("5_ujw1x")
+node = SubResource("Resource_gi0px")
+slot_index = 0
+
+[sub_resource type="Resource" id="Resource_mpn1l"]
+script = ExtResource("4_4e8vb")
+name = &""
+ingoing_type = 1
+outgoing_type = 1
+ingoing = Array[ExtResource("5_ujw1x")]([])
+outgoing = Array[ExtResource("5_ujw1x")]([SubResource("Resource_kr6jp"), SubResource("Resource_chih3"), SubResource("Resource_4njhi"), SubResource("Resource_lnq8x")])
+
+[sub_resource type="Resource" id="Resource_dvd6n"]
+script = ExtResource("6_hrxdf")
+text = "I used to be an adventurer like you. Then I took an arrow to the knee..."
+block_flow = true
+id = 0
+slots = Array[ExtResource("4_4e8vb")]([SubResource("Resource_mpn1l")])
+position = Vector2(1600, 140)
+
+[sub_resource type="Resource" id="Resource_ralst"]
+script = ExtResource("5_ujw1x")
+node = SubResource("Resource_dvd6n")
+slot_index = 0
+
+[sub_resource type="Resource" id="Resource_yhvjk"]
+script = ExtResource("5_ujw1x")
+node = SubResource("Resource_dvd6n")
+slot_index = 0
+
+[sub_resource type="Resource" id="Resource_vemr0"]
+script = ExtResource("4_4e8vb")
+name = &""
+ingoing_type = 1
+outgoing_type = 1
+ingoing = Array[ExtResource("5_ujw1x")]([])
+outgoing = Array[ExtResource("5_ujw1x")]([SubResource("Resource_yhvjk")])
+
+[sub_resource type="Resource" id="Resource_5vqjb"]
+script = ExtResource("11_g8pli")
+name = "top_level"
+id = 0
+slots = Array[ExtResource("4_4e8vb")]([SubResource("Resource_vemr0")])
+position = Vector2(1200, 280)
+
+[sub_resource type="Resource" id="Resource_xpwc8"]
+script = ExtResource("5_ujw1x")
+node = SubResource("Resource_5vqjb")
+slot_index = 0
+
+[sub_resource type="Resource" id="Resource_0wd46"]
+script = ExtResource("4_4e8vb")
+name = &""
+ingoing_type = -1
+outgoing_type = 1
+ingoing = Array[ExtResource("5_ujw1x")]([])
+outgoing = Array[ExtResource("5_ujw1x")]([SubResource("Resource_ralst"), SubResource("Resource_xpwc8")])
+
+[sub_resource type="Resource" id="Resource_t7csk"]
+script = ExtResource("3_0t26f")
+id = 0
+slots = Array[ExtResource("4_4e8vb")]([SubResource("Resource_0wd46")])
+position = Vector2(920, 260)
+
+[resource]
+script = ExtResource("1_l4obs")
+nodes = Array[ExtResource("2_mqdg7")]([SubResource("Resource_t7csk"), SubResource("Resource_dvd6n"), SubResource("Resource_4xkyn"), SubResource("Resource_q3qfj"), SubResource("Resource_eap6r"), SubResource("Resource_gjlif"), SubResource("Resource_mme4w"), SubResource("Resource_pdscp"), SubResource("Resource_xn1bp"), SubResource("Resource_5vqjb"), SubResource("Resource_gi0px"), SubResource("Resource_f4e1w")])
+scroll_offset = Vector2(375.1, -16.5436)
+zoom = 0.513158
+metadata/_custom_type_script = ExtResource("1_l4obs")
