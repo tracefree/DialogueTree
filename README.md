@@ -1,6 +1,8 @@
 # DialogueTree
 An example of how to use Godot's GraphEdit node for a visual dialogue system.
 
+![Screenshot of an example dialogue graph](https://github.com/user-attachments/assets/755d9b55-a6ad-4534-b687-d046f4802e59)
+
 This is a zero-effort release of the dialogue system I use in my game. It is not documented, will not receive updates, and doesn't function on its own - you need to integrate it with your own dialogue UI system, actor class, inventory system, quest system etc. The purpose of the release is to give an example of how the `GraphEdit` node can be used, and I encourage you to make your own systems with it fitting your specific game.
 
 If you are looking for a ready-made solution to plug into your project please have a look at:
